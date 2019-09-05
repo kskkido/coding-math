@@ -1,3 +1,4 @@
+import './styles/global.css';
 import { renderOnTo } from './render';
 import App from './components/App';
 
