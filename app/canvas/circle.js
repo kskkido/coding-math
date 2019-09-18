@@ -12,7 +12,7 @@ export const draw = (
       () => {
         context.clearRect(0, 0, width, height);
         context.beginPath();
-        context.arc(scope.centerX + Math.tan(scope.angle) * scope.offset, scope.centerY + Math.sin(scope.angle) * scope.offset, 50, 0, Math.PI * 2, false);
+        context.arc(scope.centerX, scope.centerY + Math.sin(scope.angle) * scope.offset, 50, 0, Math.PI * 2, false);
         context.fill();
       },
       {
@@ -30,7 +30,7 @@ export const draw = (
     centerY: height * .5,
     centerX: width * .5,
     offset: height * 0.3,
-    speed: 0.05,
+    speed: 0.1,
     angle: 0,
   })).start()
 };

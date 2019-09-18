@@ -1,4 +1,4 @@
-import raf from 'utils/raf';
+import Animation from 'utils/animation';
 
 export const draw = (
   context,
@@ -26,18 +26,11 @@ export const draw = (
     )
   )
 
-  const scopedRender = animate => (
-    (p) => {
-      animate(p);
-      raf(scopedRender(animate.next()));
-    }
-  );
-
-  scopedRender(setupBounce({
+  Animation.of(setupBounce({
     centerY: height * .5,
     centerX: width * .5,
     offset: height * 0.3,
     speed: 0.1,
     angle: 0,
-  }))()
+  })).start();
 };

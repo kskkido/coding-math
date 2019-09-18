@@ -1,5 +1,7 @@
-const raf = (fn) => (
+export const raf = (fn) => (
   requestAnimationFrame(fn)
 );
 
-export default raf;
+export const cancel = (stamp) => (
+  cancelAnimationFrame(stamp)
+);
