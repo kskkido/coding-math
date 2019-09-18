@@ -8,6 +8,8 @@ import * as orbit from 'canvas/orbit';
 import * as cross from 'canvas/cross';
 import * as sineWaveBounce from 'canvas/sineWaveBounce';
 import * as orbitTriad from 'canvas/orbitTriad';
+import * as circle from 'canvas/circle';
+import * as mouseTrack from 'canvas/mouseTrack';
 import Canvas from '../Canvas';
 
 const App = () =>
@@ -21,7 +23,9 @@ const App = () =>
       tap(el => el.appendChild(Canvas({ draw: orbit.draw }))),
       tap(el => el.appendChild(Canvas({ draw: cross.draw }))),
       tap(el => el.appendChild(Canvas({ draw: sineWaveBounce.draw }))),
-      tap(el => el.appendChild(Canvas({ draw: orbitTriad.draw })))
+      tap(el => el.appendChild(Canvas({ draw: orbitTriad.draw }))),
+      tap(el => el.appendChild(Canvas({ draw: circle.draw }))),
+      tap(el => el.appendChild(Canvas({ draw: mouseTrack.draw })))
     ),
     document.createElement('p')
   );

@@ -1,4 +1,5 @@
-import Animation from 'utils/animation';
+import repeat from 'utils/repeat';
+import { xArc, yArc } from 'formulas/trigonometry';
 
 export const draw = (
   context,
@@ -7,30 +8,17 @@ export const draw = (
     height
   }
 ) => {
-  const setupBounce = scope => (
-    Object.assign(
-      () => {
-        context.clearRect(0, 0, width, height);
-        context.beginPath();
-        context.arc(scope.centerX, scope.centerY + Math.sin(scope.angle) * scope.offset, 50, 0, Math.PI * 2, false);
-        context.fill();
-      },
-      {
-        next: () => (
-          setupBounce({
-            ...scope,
-            angle: scope.angle + scope.speed
-          })
-        )
-      }
-    )
-  )
+  const cx = width / 2;
+  const cy = height / 2;
+  const radius = 200;
+  const length = 20;
+  const sliceN = Math.PI * 2 / length;
 
-  Animation.of(setupBounce({
-    centerY: height * .5,
-    centerX: width * .5,
-    offset: height * 0.3,
-    speed: 0.1,
-    angle: 0,
-  })).start()
-};
+  repeat(length)(i => {
+    const radian = sliceN * i;
+
+    context.beginPath();
+    context.arc(cx + xArc(radian, radius), cy + yArc(radian, radius), 20 * Math.pow(Math.sin(radian / 2), 2), 0, Math.PI * 2, false)
+    context.fill();
+  })
+}
